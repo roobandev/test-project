@@ -22,6 +22,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN to login into the GitHub Packages
           image-name: test-project # Provide only Docker image name, tag will be automatically set to latest
-          dockerfile: Dockerfile_server
+          dockerfile: Dockerfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
