@@ -16,6 +16,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Publish package
-        run: mvn --batch-mode deploy
+        run: mvn clean package
+      - name: Push Docker
+        run: docker build -t test-project:v1 .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
