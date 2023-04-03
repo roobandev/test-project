@@ -17,7 +17,11 @@ jobs:
           distribution: 'adopt'
       - name: Publish package
         run: mvn clean package
-      - name: Push Docker
-        run: docker build -t test-project:v1 .
+      - name: Build and Publish Docker image
+        uses: VaultVulp/gp-docker-action@1.1.12
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN to login into the GitHub Packages
+          image-name: test-project # Provide only Docker image name, tag will be automatically set to latest
+          dockerfile: Dockerfile_server
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
